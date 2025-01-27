@@ -5,7 +5,7 @@
 
 
 <p align="center"> 𝗪𝗢𝗥𝗞𝗙𝗟𝗢𝗪𝗦 𝗗𝗘𝗣𝗟𝗢𝗬𝗠𝗘𝗡𝗧 𝗖𝗢𝗗𝗘</p>
-<h6 align-"center">Attention! We do not take responsibility if your github account is suspended through this Deploy method, I advise you not to use this workflow deploy method in the latest github accounts, github accounts created a year or more ago have not received the risk of suspension so far, this works It will only be done for 6 hours, you need to update the code to reactivate it</h6>
+<h6 align-"center">Attention! We do not take responsibility if your github account is suspended through this Deploy method, I advise you not to use this workflow deploy method in the latest github accounts, github accounts created 6 month or more ago have not received the risk of suspension so far, this works 24h , you need to update the code to reactivate it</h6>
 
 ```
 name: Node.js CI
@@ -17,10 +17,11 @@ on:
   pull_request:
     branches:
       - main
+  schedule:
+    - cron: "0 */6 * * *"
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -39,6 +40,6 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Start application
+    - name: Build application
       run: npm start
 ```
